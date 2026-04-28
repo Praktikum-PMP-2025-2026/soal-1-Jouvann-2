@@ -27,6 +27,7 @@ char input[100];
 char *token = NULL;
 int counter = 0, idx = 0;
 
+int countPagi = 0, countSiang = 0, countMalam = 0;
 
 void ambilData(){
     fgets(input, 100, stdin);
@@ -70,25 +71,31 @@ void ambilData(){
 
 void rankShift(){
     pegawaiTop = realloc(pegawaiTop, 3 * sizeof(pegawai));
-
+    
     for (int i = 0; i < jumlahPegawai; i++){
         if (strcmp(dataPegawai[i].shift, "PAGI") == 0){
             strcpy(pegawaiTop[0].nama, dataPegawai[i].nama);
             pegawaiTop[0].id = dataPegawai[i].id;
             strcpy(pegawaiTop[0].shift, dataPegawai[i].shift);
             pegawaiTop[0].skor = dataPegawai[i].skor;
+            countPagi++;
         }
         if (strcmp(dataPegawai[i].shift, "SIANG") == 0){
             strcpy(pegawaiTop[1].nama, dataPegawai[i].nama);
             pegawaiTop[1].id = dataPegawai[i].id;
             strcpy(pegawaiTop[1].shift, dataPegawai[i].shift);
             pegawaiTop[1].skor = dataPegawai[i].skor;
+            countSiang++;
         }
         if (strcmp(dataPegawai[i].shift, "MALAM") == 0){
             strcpy(pegawaiTop[2].nama, dataPegawai[i].nama);
             pegawaiTop[2].id = dataPegawai[i].id;
             strcpy(pegawaiTop[2].shift, dataPegawai[i].shift);
             pegawaiTop[2].skor = dataPegawai[i].skor;
+            countMalam++;
+        }
+        if (countPagi > 0 && countSiang > 0 && countMalam > 0){
+            break;
         }
 
     }
@@ -186,7 +193,15 @@ int main(){
 
     for (int i = 0; i < 3; i++){
         // printf("Top Pegawai Shift %s: %s\n", pegawaiTop[i].shift, pegawaiTop[i].nama);
-        printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+        if (countPagi != 0 && i == 0){
+            printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+        }
+        else if (countSiang != 0 && i == 1){
+            printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+        }
+        else if (countMalam != 0 && i == 2){
+            printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+        }
     }
 
     return 0;
