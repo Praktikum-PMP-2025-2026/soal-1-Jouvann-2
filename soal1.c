@@ -196,11 +196,20 @@ int main(){
         if (countPagi != 0 && i == 0){
             printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
         }
+        else if (countPagi == 0 && i == 0){
+            printf("%s -\n", pegawaiTop[i].shift);
+        }
         else if (countSiang != 0 && i == 1){
             printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
         }
+        else if (countPagi == 0 && i == 1){
+            printf("%s -\n", pegawaiTop[i].shift);
+        }
         else if (countMalam != 0 && i == 2){
             printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+        }
+        else if (countMalam == 0 && i == 2){
+            printf("%s -", pegawaiTop[i].shift);
         }
     }
 
