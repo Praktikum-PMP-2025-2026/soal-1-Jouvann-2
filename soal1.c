@@ -108,19 +108,19 @@ void rankShift(){
             }
             if (strcmp(dataPegawai[i].shift, dataPegawai[j].shift) == 0){
                 if (dataPegawai[j].skor > dataPegawai[i].skor){
-                     if (dataPegawai[i].shift == "PAGI"){
+                     if (strcmp(dataPegawai[i].shift, "PAGI") == 0){
                         strcpy(pegawaiTop[0].nama, dataPegawai[j].nama);
                         pegawaiTop[0].id = dataPegawai[j].id;
                         strcpy(pegawaiTop[0].shift, dataPegawai[j].shift);
                         pegawaiTop[0].skor = dataPegawai[j].skor;
                     }
-                    else if (dataPegawai[i].shift == "SIANG"){
+                    else if (strcmp(dataPegawai[i].shift, "SIANG") == 0){
                         strcpy(pegawaiTop[1].nama, dataPegawai[j].nama);
                         pegawaiTop[1].id = dataPegawai[j].id;
                         strcpy(pegawaiTop[1].shift, dataPegawai[j].shift);
                         pegawaiTop[1].skor = dataPegawai[j].skor;
                     }
-                    else if (dataPegawai[i].shift == "MALAM"){
+                    else if (strcmp(dataPegawai[i].shift, "MALAM") == 0){
                         strcpy(pegawaiTop[2].nama, dataPegawai[j].nama);
                         pegawaiTop[2].id = dataPegawai[j].id;
                         strcpy(pegawaiTop[2].shift, dataPegawai[j].shift);
@@ -193,23 +193,30 @@ int main(){
 
     for (int i = 0; i < 3; i++){
         // printf("Top Pegawai Shift %s: %s\n", pegawaiTop[i].shift, pegawaiTop[i].nama);
-        if (countPagi != 0 && i == 0){
-            printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+        if (i == 0){
+            if (countPagi != 0){
+                printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+            }
+            if (countPagi == 0){
+                printf("%s -\n", "PAGI");
+            }
+            
         }
-        else if (countPagi == 0 && i == 0){
-            printf("%s -\n", pegawaiTop[i].shift);
+        if (i == 1){
+            if (countSiang != 0){
+                printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+            }
+            if (countSiang == 0){
+                printf("%s -\n", "SIANG");
+            }
         }
-        else if (countSiang != 0 && i == 1){
-            printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
-        }
-        else if (countPagi == 0 && i == 1){
-            printf("%s -\n", pegawaiTop[i].shift);
-        }
-        else if (countMalam != 0 && i == 2){
-            printf("%s %s %d %d\n", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
-        }
-        else if (countMalam == 0 && i == 2){
-            printf("%s -", pegawaiTop[i].shift);
+        if (i == 2){
+            if (countMalam != 0){
+                printf("%s %s %d %d", pegawaiTop[i].shift, pegawaiTop[i].nama, pegawaiTop[i].id, pegawaiTop[i].skor);
+            }
+            if (countMalam == 0){
+                printf("%s -", "MALAM");
+            }
         }
     }
 
