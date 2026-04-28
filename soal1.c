@@ -131,19 +131,19 @@ void rankShift(){
                 else if (dataPegawai[j].skor == dataPegawai[i].skor){
                     
                     if (dataPegawai[j].id < dataPegawai[i].id){
-                        if (dataPegawai[i].shift == "PAGI"){
+                        if (strcmp(dataPegawai[i].shift, "PAGI") == 0){
                             strcpy(pegawaiTop[0].nama, dataPegawai[j].nama);
                             pegawaiTop[0].id = dataPegawai[j].id;
                             strcpy(pegawaiTop[0].shift, dataPegawai[j].shift);
                             pegawaiTop[0].skor = dataPegawai[j].skor;
                         }
-                        else if (dataPegawai[i].shift == "SIANG"){
+                        else if (strcmp(dataPegawai[i].shift, "SIANG") == 0){
                             strcpy(pegawaiTop[1].nama, dataPegawai[j].nama);
                             pegawaiTop[1].id = dataPegawai[j].id;
                             strcpy(pegawaiTop[1].shift, dataPegawai[j].shift);
                             pegawaiTop[1].skor = dataPegawai[j].skor;
                         }
-                        else if (dataPegawai[i].shift == "MALAM"){
+                        else if (strcmp(dataPegawai[i].shift, "MALAM") == 0){
                             strcpy(pegawaiTop[2].nama, dataPegawai[j].nama);
                             pegawaiTop[2].id = dataPegawai[j].id;
                             strcpy(pegawaiTop[2].shift, dataPegawai[j].shift);
@@ -152,19 +152,19 @@ void rankShift(){
                     }
                     else if (dataPegawai[j].id == dataPegawai[i].id){
                         if (strcmp(dataPegawai[j].nama, dataPegawai[i].nama) < 0){
-                            if (dataPegawai[i].shift == "PAGI"){
+                            if (strcmp(dataPegawai[i].shift, "PAGI") == 0){
                                 strcpy(pegawaiTop[0].nama, dataPegawai[j].nama);
                                 pegawaiTop[0].id = dataPegawai[j].id;
                                 strcpy(pegawaiTop[0].shift, dataPegawai[j].shift);
                                 pegawaiTop[0].skor = dataPegawai[j].skor;
                             }
-                            else if (dataPegawai[i].shift == "SIANG"){
+                            else if (strcmp(dataPegawai[i].shift, "SIANG") == 0){
                                 strcpy(pegawaiTop[1].nama, dataPegawai[j].nama);
                                 pegawaiTop[1].id = dataPegawai[j].id;
                                 strcpy(pegawaiTop[1].shift, dataPegawai[j].shift);
                                 pegawaiTop[1].skor = dataPegawai[j].skor;
                             }
-                            else if (dataPegawai[i].shift == "MALAM"){
+                            else if (strcmp(dataPegawai[i].shift, "MALAM") == 0){
                                 strcpy(pegawaiTop[2].nama, dataPegawai[j].nama);
                                 pegawaiTop[2].id = dataPegawai[j].id;
                                 strcpy(pegawaiTop[2].shift, dataPegawai[j].shift);
